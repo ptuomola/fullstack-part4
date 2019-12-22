@@ -69,7 +69,7 @@ const listWithSixBlogs = [
 ]
 
 describe('total likes', () => {
- test('when list has only one blog equals the likes of that', () => {
+  test('when list has only one blog equals the likes of that', () => {
     const result = listHelper.totalLikes(listWithOneBlog)
     expect(result).toBe(5)
   })
@@ -89,5 +89,33 @@ describe('favourite blog', () => {
   test('when list has six blogs return the one with most likes', () => {
     const result = listHelper.favouriteBlog(listWithSixBlogs)
     expect(result.title).toEqual('Canonical string reduction')
+  })
+})
+
+describe('most blogs', () => {
+  test('when list has only one blog return author of that', () => {
+    const result = listHelper.mostBlogs(listWithOneBlog)
+    expect(result.author).toEqual('Edsger W. Dijkstra')
+    expect(result.blogs).toBe(1)
+  })
+ 
+  test('when list has six blogs return the author with most posts', () => {
+    const result = listHelper.mostBlogs(listWithSixBlogs)
+    expect(result.author).toEqual('Robert C. Martin')
+    expect(result.blogs).toBe(3)
+  })
+})
+
+describe('most likes', () => {
+  test('when list has only one blog return author of that', () => {
+    const result = listHelper.mostLikes(listWithOneBlog)
+    expect(result.author).toEqual('Edsger W. Dijkstra')
+    expect(result.likes).toBe(5)
+  })
+ 
+  test('when list has six blogs return the author with most posts', () => {
+    const result = listHelper.mostLikes(listWithSixBlogs)
+    expect(result.author).toEqual('Edsger W. Dijkstra')
+    expect(result.likes).toBe(17)
   })
 })
